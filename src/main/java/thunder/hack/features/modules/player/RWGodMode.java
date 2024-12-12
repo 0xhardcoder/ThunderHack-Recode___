@@ -14,7 +14,7 @@ import net.minecraft.inventory.container.ClickType;
 import net.minecraft.util.text.TextFormatting;
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.MinecraftClient;
 
 public class RWGodMode extends Module {
     private final Timer stopWatch = new Timer();
