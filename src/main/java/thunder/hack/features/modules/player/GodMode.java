@@ -7,6 +7,14 @@ import net.minecraft.util.math.BlockPos;
 import thunder.hack.events.impl.PacketEvent;
 import thunder.hack.features.modules.Module;
 import thunder.hack.utility.Timer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ClientBossInfo;
+import net.minecraft.client.gui.overlay.BossOverlayGui;
+import net.minecraft.inventory.container.ClickType;
+import net.minecraft.util.text.TextFormatting;
+import java.lang.reflect.Field;
+import java.util.Map;
+import net.minecraft.client.Minecraft;
 
 public class RWGodMode extends Module {
     private final Timer stopWatch = new Timer();
@@ -130,11 +138,11 @@ public class RWGodMode extends Module {
 
     @Override
     public void onUpdate() {
-                if (!menuClosed && warpDelay.hasTimeElapsed(1000)) {
+                if (!menuClosed && warpDelay.passedMs(1000)) {
                     forceCloseMenu();
                 }
 
-                if (warpDelay.hasTimeElapsed(500) && !slot21Clicked) {
+                if (warpDelay.passedMs(500) && !slot21Clicked) {
                     clickSlot(21);
                     slot21Clicked = true;
                 }
@@ -149,7 +157,7 @@ public class RWGodMode extends Module {
                     }
                 }
 
-                if (clickingSlot13 && stopWatch.hasTimeElapsed(5)) {
+                if (clickingSlot13 && stopWatch.passedMs(5)) {
                     clickSlot(13);
                     stopWatch.reset();
                 }
